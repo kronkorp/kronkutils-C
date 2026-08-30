@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkronkutils.a dynarray/CMakeFiles/kronkdynarray_objects.dir/src/dynarray_clear.c.o dynarray/CMakeFiles/kronkdynarray_objects.dir/src/dynarray_free.c.o dynarray/CMakeFiles/kronkdynarray_objects.dir/src/dynarray_getters.c.o dynarray/CMakeFiles/kronkdynarray_objects.dir/src/dynarray_init.c.o dynarray/CMakeFiles/kronkdynarray_objects.dir/src/dynarray_push.c.o
+/usr/bin/ranlib libkronkutils.a
