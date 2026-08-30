@@ -15,7 +15,7 @@ size_t kuDynarray_getSize(
 )
 {
     if (!ptr) {
-        return NULL;
+        return 0;
     }
     return kuDynarray_getHeader(ptr)->size;
 }
@@ -25,7 +25,7 @@ size_t kuDynarray_getLoad(
 )
 {
     if (!ptr) {
-        return NULL;
+        return 0;
     }
     return kuDynarray_getHeader(ptr)->load;
 }
@@ -35,7 +35,7 @@ size_t kuDynarray_getTypeSize(
 )
 {
     if (!ptr) {
-        return NULL;
+        return 0;
     }
     return kuDynarray_getHeader(ptr)->type;
 }

@@ -1,7 +1,0 @@
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/CMakeFiles/kronkutils_static.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/CMakeFiles/kronkutils_shared.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/CMakeFiles/edit_cache.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/CMakeFiles/rebuild_cache.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/dynarray/CMakeFiles/kronkdynarray_objects.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/dynarray/CMakeFiles/edit_cache.dir
-/home/eratz/delivery/free/kronkorp/kronkutils-C/build-kronkutils/dynarray/CMakeFiles/rebuild_cache.dir
