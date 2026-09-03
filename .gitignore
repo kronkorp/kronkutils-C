@@ -1,0 +1,13 @@
+# IDE Folders
+.vscode/
+
+# Build Folders
+build/
+compile_commands.json
+Release/
+Debug/
+
+# Binary files
+*.out
+*.so
+*.a
