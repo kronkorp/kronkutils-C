@@ -1,5 +1,30 @@
 #include "../include/dynarray.h"
 
+void* __kuDynarray_at(
+    const void *ptr,
+    size_t idx
+)
+{
+    kuDynarrayHeader *header = kuDynarray_getHeader(ptr);
+
+    if (!header || idx >= header->load) {
+        return NULL;
+    }
+    return (char *)ptr + (idx * header->type);
+}
+
+void* __kuDynarray_last(
+    const void *ptr
+)
+{
+    kuDynarrayHeader *header = kuDynarray_getHeader(ptr);
+
+    if (!header || header->load == 0) {
+        return NULL;
+    }
+    return __kuDynarray_at(ptr, header->load - 1);
+}
+
 kuDynarrayHeader* kuDynarray_getHeader(
     const void *ptr
 )

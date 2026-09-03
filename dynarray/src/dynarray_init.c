@@ -1,4 +1,5 @@
 #include "../include/dynarray.h"
+#include <stdint.h>
 #include <stdlib.h>
 
 int __kuDynarray_init(
@@ -9,7 +10,8 @@ int __kuDynarray_init(
 {
     kuDynarrayHeader* header = NULL;
 
-    if (!ptr || typesize == 0 || initialSize == 0) {
+    if (!ptr || typesize == 0 || initialSize == 0 ||
+        initialSize > (SIZE_MAX - sizeof(kuDynarrayHeader)) / typesize) {
         return -1;
     }
     header = malloc(sizeof(kuDynarrayHeader) + (initialSize * typesize));

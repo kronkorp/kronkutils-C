@@ -27,31 +27,31 @@ typedef struct kronkutils_dynarray_header {
 
 ///////////////////////////////////////////////////////////////////////////////
 int __kuDynarray_init(void **ptr, size_t initialSize, size_t typesize);
-#define kuDynarray_init(ptr, initialSize, type) (__kuDynarray_init((void **)ptr, initialSize, sizeof(typesize)))
+#define kuDynarray_init(ptr, initialSize, type) (__kuDynarray_init((void **)(ptr), (initialSize), sizeof(type)))
 ///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
 void* __kuDynarray_at(const void *ptr, size_t idx);
-#define kuDynarray_at(ptr, idx) (typeof(ptr))(__kuDynarray_at((void **)ptr))
+#define kuDynarray_at(ptr, idx) ((typeof(ptr))__kuDynarray_at((ptr), (idx)))
 ///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
 void* __kuDynarray_last(const void *ptr);
-#define kuDynarray_last(ptr) (typeof(ptr))(__kuDynarray_last(ptr))
+#define kuDynarray_last(ptr) ((typeof(ptr))__kuDynarray_last((ptr)))
 ///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
 int __kuDynarray_pushBack(void **ptr, const void *e);
-#define kuDynarray_pushBack(ptr, e) (__kuDynarray_pushBack((void *)&(ptr), (void *)&(typeof(e)){ e }))
+#define kuDynarray_pushBack(ptr, e) (__kuDynarray_pushBack((void **)&(ptr), &(typeof(e)){ (e) }))
 ///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
 void __kuDynarray_popBack(void **ptr);
-#define kuDynarray_popBack(ptr) (__kuDynarray_popBack((void *)&(ptr)))
+#define kuDynarray_popBack(ptr) (__kuDynarray_popBack((void **)&(ptr)))
 ///////////////////////////////////////////////////////////////////////////////
 
 
