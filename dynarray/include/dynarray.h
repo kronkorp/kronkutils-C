@@ -45,7 +45,11 @@ void* __kuDynarray_last(const void *ptr);
 
 ///////////////////////////////////////////////////////////////////////////////
 int __kuDynarray_pushBack(void **ptr, const void *e);
-#define kuDynarray_pushBack(ptr, e) (__kuDynarray_pushBack((void **)&(ptr), &(typeof(e)){ (e) }))
+#define kuDynarray_pushBack(ptr, e) \
+    (__extension__ ({ \
+        typeof(e) __kuDynarray_tmp = (e); \
+        __kuDynarray_pushBack((void **)&(ptr), &__kuDynarray_tmp); \
+    }))
 ///////////////////////////////////////////////////////////////////////////////
 
 
