@@ -10,6 +10,7 @@ set(KRONKDYNARRAY_SOURCES
 	src/dynarray_getters.c
 	src/dynarray_init.c
 	src/dynarray_push.c
+	src/dynarray_resize.c
 )
 
 add_library(kronkdynarray_objects OBJECT ${KRONKDYNARRAY_SOURCES})

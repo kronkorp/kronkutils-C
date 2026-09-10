@@ -44,6 +44,24 @@ Test(dynarray, push_and_access)
     kuDynarray_free(values);
 }
 
+Test(dynarray, resize_direct_assignment)
+{
+    int *values = NULL;
+
+    AssertEq(kuDynarray_init(&values, 1, int), 0,
+        "initialization should succeed");
+    AssertEq(kuDynarray_resize(values, 2), 0,
+        "resize should increase capacity");
+    values[1] = 42;
+    AssertEq(values[1], 42,
+        "a caller should be able to assign directly by index");
+    AssertEq(kuDynarray_getSize(values), 2,
+        "resize should update capacity");
+    AssertEq(kuDynarray_getLoad(values), 0,
+        "direct assignment should not change the tracked load");
+    kuDynarray_free(values);
+}
+
 Test(dynarray, pop_clear_and_bounds)
 {
     int *values = NULL;

@@ -32,6 +32,10 @@ int __kuDynarray_init(void **ptr, size_t initialSize, size_t typesize);
 
 
 ///////////////////////////////////////////////////////////////////////////////
+int __kuDynarray_resize(void **ptr, size_t newSize);
+#define kuDynarray_resize(ptr, newSize) (__kuDynarray_resize((void **)&(ptr), (newSize)))
+
+
 void* __kuDynarray_at(const void *ptr, size_t idx);
 #define kuDynarray_at(ptr, idx) ((typeof(ptr))__kuDynarray_at((ptr), (idx)))
 ///////////////////////////////////////////////////////////////////////////////
