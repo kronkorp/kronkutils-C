@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  linux:
+    name: Linux build and tests (GCC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        timeout-minutes: 5
+        run: cmake --build build --parallel
+      - name: Run tests
+        timeout-minutes: 3
+        run: ctest --test-dir build --output-on-failure
+
+  # NOTE: Both generators: Ninja refuses two rules that make the same file, which
+  #       Visual Studio's does not see
+  windows_msvc:
+    name: Windows build (MSVC, ${{ matrix.generator }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        generator: [Visual Studio 17 2022, Ninja]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Configure
+        run: cmake -S . -B build -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        timeout-minutes: 5
+        run: cmake --build build --config Release --parallel
